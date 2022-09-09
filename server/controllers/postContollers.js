@@ -7,7 +7,7 @@ const cloudinary = require("../utils/cloudinary");
 exports.addPost = async (req, res) => {
   try {
     const { title, desc, isAdmin } = req.body;
-    const filStr = req.file.path;
+
     const result = await cloudinary.uploader.upload(req.file.path, {
       upload_preset: "foods",
     });
@@ -19,7 +19,7 @@ exports.addPost = async (req, res) => {
       owner: req.userId,
       isAdmin,
     });
-    console.log(req.body);
+    // console.log(req.body);
     res.json(newPost);
   } catch (error) {
     res.status(500).json({ msg: "something went wrong." });

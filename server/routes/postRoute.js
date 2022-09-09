@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-
+const { Post } = require("../modules/postModule");
 const {
   addPost,
   getPost,
@@ -9,10 +9,13 @@ const {
   upadateImage,
 } = require("../controllers/postContollers");
 const { authMilddleware } = require("../middlewares/authMiddlewar");
-const { userLogin } = require("../middlewares/isAdminMiddleware");
+// const { userLogin } = require("../middlewares/isAdminMiddleware");
+
 // const { isAdminMiddleware, userLogin } = require("../middlewares/isAdminMiddleware");
 
 const router = express.Router();
+const User = require("../modules/userModule");
+const { isAdminMiddleware } = require("../middlewares/isAdminMiddleware");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -28,7 +31,8 @@ const upload = multer({ storage: storage });
 
 router.post(
   "/addPost",
-  userLogin,
+  //authMilddleware,
+  isAdminMiddleware,
 
   upload.single("image"),
   addPost

@@ -18,26 +18,28 @@ const Cart = () => {
         <Container>
           <Row>
             <Col lg="12">
-              {cartItems.length === 0 ? (
-                <h5 className="text-center">Your cart is empty</h5>
-              ) : (
-                <table className="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th>Image</th>
-                      <th>Product Title</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cartItems.map((item) => (
-                      <Tr item={item} key={item.id} />
-                    ))}
-                  </tbody>
-                </table>
-              )}
+              {/* <div>
+                {cartItems.length === 0 ? (
+                  <h5 className="text-center">Your cart is empty</h5>
+                ) : (
+                  <table className="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Image</th>
+                        <th>Product Title</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cartItems.map((item) => (
+                        <Tr item={item} key={item.id} />
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
 
               <div className="mt-4">
                 <h6>
@@ -53,7 +55,7 @@ const Cart = () => {
                     <Link to="/checkout">Proceed to checkout</Link>
                   </button>
                 </div>
-              </div>
+              </div> */}
             </Col>
           </Row>
         </Container>

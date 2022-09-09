@@ -11,7 +11,7 @@ exports.register = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { username, email, password, role, isAdmin } = req.body;
+    const { username, email, password } = req.body;
     const existUser = await User.findOne({ email });
     if (existUser)
       return res.status(400).json({ msg: "User already registread." });
@@ -19,19 +19,17 @@ exports.register = async (req, res) => {
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync(password, salt);
     const newUser = await User.create({
+      isAdmin,
+      role,
       username,
       email,
-      role,
-      isAdmin,
       password: hash,
     });
-    const roleUser = newUser.role;
-    const roleAdmin = newUser.isAdmin;
-
-    const token = jwt.sign({ sub: newUser._id }, process.env.JWT_SECRT);
+    const token = jwt.sign(
+      { sub: newUser._id, isAdmin: newUser.isAdmin },
+      process.env.JWT_SECRET
+    );
     res.json({ success: true, token });
-    console.log("role", roleUser);
-    console.log("role admin", roleAdmin);
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "something went wrong." });
@@ -50,10 +48,8 @@ exports.login = async (req, res) => {
 
     var validate = await bcrypt.compare(password, existUser.password);
     if (!validate) return res.status(400).json({ msg: "Invalid password." });
-
-    const token = jwt.sign({ sub: existUser._id }, process.env.JWT_SECRT);
+    const token = jwt.sign({ sub: existUser._id }, process.env.JWT_SECRET);
     res.json({ success: true, token });
-    // console.log("user", newUser);
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "something went wrong ." });

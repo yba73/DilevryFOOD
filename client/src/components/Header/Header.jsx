@@ -69,9 +69,15 @@ const Header = () => {
               <Link className="navClass" to="/homes">
                 Home
               </Link>
+              <Link className="navClass" to="/admin">
+                Admin
+              </Link>
 
               {isAuth ? (
                 <>
+                  <Link className="navClass" to="/profile">
+                    Profile
+                  </Link>
                   <Link className="navClass" to="/foods">
                     Foods
                   </Link>
