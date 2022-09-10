@@ -1,9 +1,10 @@
 import React from "react";
 import "../../styles/dashboard.css";
 import { Container, Row, Col } from "reactstrap";
-import Helmet from "../Helmet/Helmet";
-import CommonSection from "../UI/common-section/CommonSection";
+import Helmet from "../../components/Helmet/Helmet";
+import CommonSection from "../../components/UI/common-section/CommonSection";
 import NavDash from "./NavDash";
+
 <link
   href="https://fonts.googleapis.com/css?family=Open Sans Condensed:300"
   rel="stylesheet"
@@ -60,8 +61,8 @@ const Customers = () => {
                               <td>John Steve Doe</td>
                               <td>John Steve Doe</td>
                               <td>John Steve Doe</td>
-                              <button className="btnDelete">Delete</button>
                               <td>
+                                <button className="btnDelete">Delete</button>
                                 <img src="info.png" alt="" />
                               </td>
                             </tr>

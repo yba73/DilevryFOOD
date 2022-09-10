@@ -1,17 +1,18 @@
 const Category = require("../modules/categoryModel");
-
+const cloudinary = require("../utils/cloudinary");
 // @description add new post
 // @params POST /api/v1/posts/addpost
 // @access PRIVATE
 exports.addCategory = async (req, res) => {
   try {
     const { display } = req.body;
-
-    const imagePath = `http://localhost:5000/${req.file.path}`;
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      upload_preset: "category",
+    });
     const newPost = await Category.create({
       display,
 
-      imgUrl: imagePath,
+      imgUrl: result.secure_url,
       owner: req.userId,
     });
     res.json(newPost);

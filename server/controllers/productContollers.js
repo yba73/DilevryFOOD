@@ -2,17 +2,18 @@ const Post = require("../modules/productsModel");
 
 const cloudinary = require("../utils/cloudinary");
 // @description add new post
-// @params POST /api/v1/posts/addpost
+// @params POST /api/v1/admin/products/addproducts
 // @access PRIVATE
 
 exports.addPost = async (req, res) => {
   try {
-    const { title, desc, price, category } = req.body;
+    const { title, desc, price, category, id } = req.body;
 
     const result = await cloudinary.uploader.upload(req.file.path, {
-      upload_preset: "foods",
+      upload_preset: "product",
     });
     const newPost = await Post.create({
+      id,
       title,
       price,
       category,
@@ -29,7 +30,7 @@ exports.addPost = async (req, res) => {
 };
 
 // @description GET post List
-// @params GET /api/v1/posts
+// @params GET /api/v1/products
 // @access PUBLIC
 exports.getPost = async (req, res) => {
   try {
@@ -41,7 +42,7 @@ exports.getPost = async (req, res) => {
 };
 
 // @description Delete post by id
-// @params DELETE /api/v1/posts/:id
+// @params DELETE /api/v1/products/:id
 // @access PRIVATE-owner
 exports.deletePost = async (req, res) => {
   try {
@@ -56,7 +57,7 @@ exports.deletePost = async (req, res) => {
 };
 
 // @description Update post by id
-// @params PUT /api/v1/posts/:id
+// @params PUT /api/v1/admin/products/:id
 // @access PRIVATE-owner
 
 exports.upadatePost = async (req, res) => {
@@ -72,7 +73,7 @@ exports.upadatePost = async (req, res) => {
 };
 
 // @description Update post by id
-// @params PUT /api/v1/posts/image/:id
+// @params PUT /api/v1/admin/products/image/:id
 // @access PRIVATE-owner
 
 exports.upadateImage = async (req, res) => {

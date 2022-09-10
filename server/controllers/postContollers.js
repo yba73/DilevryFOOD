@@ -9,7 +9,7 @@ exports.addPost = async (req, res) => {
     const { title, desc, isAdmin } = req.body;
 
     const result = await cloudinary.uploader.upload(req.file.path, {
-      upload_preset: "foods",
+      upload_preset: "product",
     });
 
     const newPost = await Post.create({

@@ -2,9 +2,10 @@ import React from "react";
 
 import "../../styles/dashboard.css";
 import { Container, Row, Col } from "reactstrap";
-import Helmet from "../Helmet/Helmet";
-import CommonSection from "../UI/common-section/CommonSection";
+import Helmet from "../../components/Helmet/Helmet";
+import CommonSection from "../../components/UI/common-section/CommonSection";
 import NavDash from "./NavDash";
+
 const Payments = () => {
   return (
     <Helmet title="Payments">

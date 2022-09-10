@@ -10,10 +10,10 @@ import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
-import Dashboard from "../components/ad/Dashboard";
-import Customers from "../components/ad/Customers";
-import Payments from "../components/ad/Payments";
-import Products from "../components/ad/Products";
+import Dashboard from "../pages/adminDashboard/Dashboard";
+import Customers from "../pages/adminDashboard/Customers";
+import Payments from "../pages/adminDashboard/Payments";
+import Products from "../pages/adminDashboard/Products";
 import Profile from "../pages/Profile";
 
 const Routers = () => {
@@ -32,6 +32,7 @@ const Routers = () => {
       <Route element={<ProtectedRoute />}>
         <Route path="/profile" element={<Profile />} />
         <Route path="/foods" element={<AllFoods />} />
+        ss
         <Route path="/foods/:id" element={<FoodDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />

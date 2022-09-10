@@ -1,17 +1,21 @@
 const Home = require("../modules/homeModel");
-
+const cloudinary = require("../utils/cloudinary");
 // @description add new post
 // @params POST /api/v1/posts/addpost
 // @access PRIVATE
 exports.addPost = async (req, res) => {
   try {
-    const { title, desc } = req.body;
+    const { desc, display, id } = req.body;
 
-    const imagePath = `http://localhost:5000/${req.file.path}`;
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      upload_preset: "homes",
+    });
     const newPost = await Home.create({
-      title,
+      display,
+      id,
       desc,
-      image: imagePath,
+      imgUrl: result.secure_url,
+
       owner: req.userId,
     });
     res.json(newPost);

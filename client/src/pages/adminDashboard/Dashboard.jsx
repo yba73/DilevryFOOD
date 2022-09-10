@@ -3,9 +3,10 @@ import { useSelector } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
 import "../../styles/dashboard.css";
 
-import Helmet from "../Helmet/Helmet";
-import CommonSection from "../UI/common-section/CommonSection";
+import Helmet from "../../components/Helmet/Helmet";
 import NavDash from "./NavDash";
+import CommonSection from "../../components/UI/common-section/CommonSection";
+
 const Dashboard = () => {
   return (
     <Helmet title="Admin">

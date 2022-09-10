@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
@@ -13,7 +13,7 @@ const Register = () => {
   // const signupPasswordRef = useRef();
   // const signupEmailRef = useRef();
   const nav = useNavigate();
-
+  const [fileUp, setFileUp] = useState({});
   // Function React hook form */
   const {
     register,
@@ -92,17 +92,31 @@ const Register = () => {
                           {...register("password")}
                         />
                       </div>
+
                       <span className="help-text">At least 8 characters</span>
                     </div>
-
+                    {/* image */}
+                    <div className="form-group">
+                      <label>Photo</label>
+                      <div className="input-group">
+                        <input
+                          type="file"
+                          placeholder="Entre your phtot"
+                          onChange={(e) => setFileUp(e.target.files[0])}
+                          accept=".png,.jpeg,.jpg"
+                        />
+                      </div>
+                    </div>
                     {/* button Register */}
+
                     <button type="submit" className="btn-submit">
                       Register
                     </button>
+                    <Link to="/login">Already have an account? Login</Link>
                   </form>
                 </div>
+                <div></div>
               </div>
-              <Link to="/login">Already have an account? Login</Link>
             </Col>
           </Row>
         </Container>

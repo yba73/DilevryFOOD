@@ -7,7 +7,7 @@
   font-family: "Poppins", sans-serif;
 }
 .containerregister {
-  min-height: 79vh;
+  min-height: 85vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -53,12 +53,12 @@ a:hover {
 
 form {
   width: 40%;
-  height: 85%;
+  height: 98%;
   padding: 28px;
   border-radius: 12px;
   background: #fde4e4;
   position: absolute;
-  top: 100%;
+  top: 105%;
   transform: translateY(-50%) scale(0.8);
   opacity: 0;
   z-index: 100;
@@ -77,7 +77,7 @@ form.active {
   margin-bottom: 20px;
 }
 .form-group {
-  margin-bottom: 14px;
+  margin-bottom: -38px;
 }
 .form-group label {
   display: inline-block;
@@ -149,6 +149,7 @@ form.active {
   background: var(--blue);
   margin-bottom: 20px;
   font-size: 20px;
+  margin-top: 60px;
 }
 .btn-submit:hover {
   background: var(--dark-blue);

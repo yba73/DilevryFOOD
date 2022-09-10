@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getHeader = createAsyncThunk(
-  "header/getHeader",
+export const getHome = createAsyncThunk(
+  "Home/getHome",
   async (data, { rejectWithValue }) => {
     try {
-      const res = await axios.get("/api/v1/headers");
+      const res = await axios.get("/api/v1/homes");
       return res.data;
     } catch (error) {
       return rejectWithValue(
@@ -17,34 +17,30 @@ export const getHeader = createAsyncThunk(
   }
 );
 
-const headerSlice = createSlice({
-  name: "Header",
+const homeSlice = createSlice({
+  name: "home",
   initialState: {
-    HeaderState: "",
-    headerList: [],
+    HomeState: "",
+    HomeList: [],
     errors: null,
     loading: false,
   },
-  reducers: {
-    selectHeader: (state, action) => {
-      state.HeaderState = action.payload;
-    },
-  },
+
   extraReducers: {
-    [getHeader.pending]: (state) => {
+    [getHome.pending]: (state) => {
       state.loading = true;
     },
-    [getHeader.fulfilled]: (state, action) => {
+    [getHome.fulfilled]: (state, action) => {
       state.loading = false;
-      state.headerList = action.payload;
+      state.HomeList = action.payload;
       state.errors = null;
     },
-    [getHeader.rejected]: (state, action) => {
+    [getHome.rejected]: (state, action) => {
       state.loading = false;
       state.errors = action.payload;
     },
   },
 });
 
-export default headerSlice.reducer;
-export const { selectHeader } = headerSlice.actions;
+export default homeSlice.reducer;
+export const { selectHome } = homeSlice.actions;

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { getHeader } from "../../store/shopping-cart/headerSlice";
+
 import { Container } from "reactstrap";
 import logo from "../../assets/images/res-logo.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -69,7 +69,7 @@ const Header = () => {
               <Link className="navClass" to="/homes">
                 Home
               </Link>
-              <Link className="navClass" to="/admin">
+              <Link className="navClass" to="/admin/customers">
                 Admin
               </Link>
 

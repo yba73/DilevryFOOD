@@ -48,10 +48,11 @@ const Login = () => {
                     <h2 className="title">Login</h2>
 
                     {/* Email */}
-                    <div className="form-group">
+                    <div className="form-groupLogin">
                       <label>Email</label>
                       <div className="input-group">
                         <input
+                          className="inputLogin"
                           type="email"
                           placeholder="Entre your Email"
                           {...register("email", {
@@ -67,10 +68,11 @@ const Login = () => {
                     </div>
 
                     {/* Password */}
-                    <div className="form-group">
+                    <div className="form-groupLogin">
                       <label>Password</label>
                       <div className="input-group">
                         <input
+                          className="inputLogin"
                           type="password"
                           pattern=".{8,}"
                           id="password"
@@ -83,11 +85,11 @@ const Login = () => {
                       </div>
                       <span className="help-text">At least 8 characters</span>
                     </div>
-
-                    {/* button Login */}
                     <button type="submit" className="btn-submit">
                       Login
                     </button>
+
+                    {/* button Login */}
                   </form>
                 </div>
               </div>

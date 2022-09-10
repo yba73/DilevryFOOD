@@ -17,16 +17,17 @@ const NavDash = () => {
               Users
             </Link>
           </li>
-          <li>
-            <img src="reading-book (1).png" alt="" />
-            <Link className="spanLink" to="/admin/payments/">
-              Payments
-            </Link>
-          </li>
+
           <li>
             <img src="teacher2.png" alt="" />
             <Link className="spanLink" to="/admin/products/">
               Products
+            </Link>
+          </li>
+          <li>
+            <img src="reading-book (1).png" alt="" />
+            <Link className="spanLink" to="/admin/payments/">
+              Payments
             </Link>
           </li>
           <li>

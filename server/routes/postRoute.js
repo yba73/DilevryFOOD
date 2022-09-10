@@ -31,7 +31,7 @@ const upload = multer({ storage: storage });
 
 router.post(
   "/addPost",
-  //authMilddleware,
+  // authMilddleware,
   isAdminMiddleware,
 
   upload.single("image"),

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import { getProducts } from "../store/shopping-cart/productSlice";
+
 import { Container, Row, Col } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-import products from "../assets/fake-data/products";
+// import products from "../assets/fake-data/products";
 import ProductCard from "../components/UI/product-card/ProductCard";
 import ReactPaginate from "react-paginate";
 
@@ -22,11 +23,11 @@ const AllFoods = () => {
 
   const [pageNumber, setPageNumber] = useState(0);
   //ProductList = products
-  const searchedProduct = products.filter((item) => {
+  const searchedProduct = ProductList.filter((item) => {
     if (searchTerm.value === "") {
       return item;
     }
-    if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+    if (item.title.toLowerCase().includes(searchTerm.toLowerCase().trim())) {
       return item;
     } else {
       return console.log("not found");

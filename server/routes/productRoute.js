@@ -20,12 +20,17 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/addProduct", authMilddleware, upload.single("image01"), addPost);
-router.get("/", getPost);
-router.delete("/:id", authMilddleware, deletePost);
-router.put("/:id", authMilddleware, upadatePost);
+router.post(
+  "/admin/products/addproducts",
+  authMilddleware,
+  upload.single("image01"),
+  addPost
+);
+router.get("/foods/", getPost);
+router.delete("/admin/products/:id", authMilddleware, deletePost);
+router.put("/admin/products/:id", authMilddleware, upadatePost);
 router.put(
-  "/image/:id",
+  "/admin/products/image/:id",
   authMilddleware,
 
   upadateImage

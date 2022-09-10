@@ -2,6 +2,7 @@ const User = require("../modules/userModule");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
+
 // @description register a new user
 // @params POST /api/v1/users/register
 // @access PUBLIC
@@ -11,22 +12,24 @@ exports.register = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { username, email, password } = req.body;
+    const { username, email, password, isAdmin, role } = req.body;
     const existUser = await User.findOne({ email });
     if (existUser)
       return res.status(400).json({ msg: "User already registread." });
 
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync(password, salt);
+
     const newUser = await User.create({
       isAdmin,
+
       role,
       username,
       email,
       password: hash,
     });
     const token = jwt.sign(
-      { sub: newUser._id, isAdmin: newUser.isAdmin },
+      { sub: newUser._id, role: newUser.role, isAdmin: newUser.isAdmin },
       process.env.JWT_SECRET
     );
     res.json({ success: true, token });

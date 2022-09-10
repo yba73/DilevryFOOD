@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const poroductSchema = mongoose.Schema({
-  N: {
+  id: {
     type: Number,
-    required: true,
   },
   title: {
     type: String,

@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+// get products products/
 export const getProducts = createAsyncThunk(
-  "products/getProduts",
+  "foods",
   async (data, { rejectWithValue }) => {
     try {
       const res = await axios.get("/api/v1/foods");
@@ -16,8 +16,33 @@ export const getProducts = createAsyncThunk(
     }
   }
 );
+// Post products admin/products/addproducts
+export const addProducts = createAsyncThunk(
+  "admin/products/addproducts",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const form = new FormData();
+      form.append("id", data.id);
+      form.append("title", data.title);
+      form.append("price", data.price);
+      form.append("category", data.category);
+      form.append("desc", data.desc);
+      form.append("image01", data.file);
+      const res = await axios.post("/api/v1/admin/products/addproducts", form, {
+        headers: { token: localStorage.getItem("token") },
+      });
+      return dispatch(getProducts());
+    } catch (error) {
+      return rejectWithValue(
+        error.response && error.response.data.msg
+          ? error.response.data.msg
+          : error.message
+      );
+    }
+  }
+);
 
-const productSlice = createSlice({
+export const productSlice = createSlice({
   name: "products",
   initialState: {
     ProductsState: "",

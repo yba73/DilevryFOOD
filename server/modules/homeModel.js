@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 const homeSchema = mongoose.Schema({
   // categoryModel
+
+  id: {
+    type: Number,
+  },
   display: {
     type: String,
   },
@@ -14,9 +18,6 @@ const homeSchema = mongoose.Schema({
   // Header
   logo: {
     type: String,
-    titleHeader: {
-      type: String,
-    },
   },
   desc: {
     type: String,

@@ -23,7 +23,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/addHome", authMilddleware, upload.single("image"), addPost);
+router.post(
+  "/addHome",
+  authMilddleware,
+  upload.single("imgUrl"),
+
+  addPost
+);
 router.get("/", getPost);
 router.delete("/:id", authMilddleware, deletePost);
 router.put("/:id", authMilddleware, upadatePost);
