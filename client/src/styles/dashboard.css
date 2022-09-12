@@ -139,6 +139,9 @@ td {
   background: white;
   color: #f05462;
 }
+a :hover {
+  color: #f05462;
+}
 
 .containererdash {
   min-height: 100vh;
@@ -296,11 +299,9 @@ td {
 }
 
 @media screen and (max-width: 940px) {
-  .side-menu li span {
-    display: none;
-  }
-  .spanLink {
-    display: none;
+  .spanLink :focus {
+    color: #f05462;
+    background-color: #f05462;
   }
   .side-menu {
     align-items: center;
@@ -310,6 +311,7 @@ td {
     height: 40px;
   }
   .side-menu li:hover {
+    background: #f05462;
     background: #f05462;
     padding: 8px 38px;
     border: 2px solid white;

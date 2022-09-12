@@ -1,9 +1,10 @@
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import CommonSection from "../components/UI/common-section/CommonSection";
 import Helmet from "../components/Helmet/Helmet";
 import "../styles/cart-page.css";
-import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
 import { cartActions } from "../store/shopping-cart/cartSlice";
 import { Link } from "react-router-dom";
@@ -18,7 +19,7 @@ const Cart = () => {
         <Container>
           <Row>
             <Col lg="12">
-              {/* <div>
+              <div>
                 {cartItems.length === 0 ? (
                   <h5 className="text-center">Your cart is empty</h5>
                 ) : (
@@ -55,7 +56,7 @@ const Cart = () => {
                     <Link to="/checkout">Proceed to checkout</Link>
                   </button>
                 </div>
-              </div> */}
+              </div>
             </Col>
           </Row>
         </Container>

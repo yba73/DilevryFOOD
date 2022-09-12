@@ -3,7 +3,7 @@ const multer = require("multer");
 const {
   addPost,
   getPost,
-  deletePost,
+  deleteProduct,
   upadatePost,
   upadateImage,
 } = require("../controllers/productContollers");
@@ -20,17 +20,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post(
-  "/admin/products/addproducts",
-  authMilddleware,
-  upload.single("image01"),
-  addPost
-);
-router.get("/foods/", getPost);
-router.delete("/admin/products/:id", authMilddleware, deletePost);
-router.put("/admin/products/:id", authMilddleware, upadatePost);
+router.post("/addproducts", authMilddleware, upload.single("image01"), addPost);
+router.get("/", getPost);
+router.delete("/:id", deleteProduct);
+router.put("/:id", authMilddleware, upadatePost);
 router.put(
-  "/admin/products/image/:id",
+  "/image/:id",
   authMilddleware,
 
   upadateImage

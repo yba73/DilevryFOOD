@@ -1,4 +1,5 @@
 const Post = require("../modules/postModule");
+
 const cloudinary = require("../utils/cloudinary");
 
 // @description add new post

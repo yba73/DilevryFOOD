@@ -50,15 +50,17 @@ a:hover {
   margin-top: 5px;
   font-size: 15px;
 }
-
-form {
-  width: 40%;
-  height: 98%;
+.navLink :active {
+  color: red;
+}
+.formRegister {
+  width: 30%;
+  height: 90%;
   padding: 28px;
   border-radius: 12px;
   background: #fde4e4;
   position: absolute;
-  top: 105%;
+  top: 100%;
   transform: translateY(-50%) scale(0.8);
   opacity: 0;
   z-index: 100;
@@ -74,10 +76,15 @@ form.active {
 .title {
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: -10px;
+}
+.titleRegister {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: -30px;
 }
 .form-group {
-  margin-bottom: -38px;
+  margin-bottom: -29px;
 }
 .form-group label {
   display: inline-block;
@@ -96,6 +103,7 @@ form.active {
   width: 100%;
   transition: all 0.3s ease;
   font-size: 14px;
+  height: 35px;
 }
 
 /* Validation */
@@ -149,7 +157,8 @@ form.active {
   background: var(--blue);
   margin-bottom: 20px;
   font-size: 20px;
-  margin-top: 60px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 .btn-submit:hover {
   background: var(--dark-blue);

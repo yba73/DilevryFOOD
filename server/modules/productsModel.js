@@ -18,6 +18,7 @@ const poroductSchema = mongoose.Schema({
   image03: {
     type: String,
   },
+
   category: {
     type: String,
   },

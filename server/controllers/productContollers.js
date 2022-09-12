@@ -41,21 +41,17 @@ exports.getPost = async (req, res) => {
   }
 };
 
-// @description Delete post by id
+// @description Delete product by id
 // @params DELETE /api/v1/products/:id
 // @access PRIVATE-owner
-exports.deletePost = async (req, res) => {
+exports.deleteProduct = async (req, res) => {
   try {
-    const postTask = await Post.findById(req.params.id);
-    if (postTask.owner.toString() !== req.userId)
-      return res.status(401).json({ msg: "you are not authorized" });
     await Post.findByIdAndDelete(req.params.id);
     res.json({ sucsses: true });
   } catch (error) {
     res.status(500).json({ msg: "something went wrong." });
   }
 };
-
 // @description Update post by id
 // @params PUT /api/v1/admin/products/:id
 // @access PRIVATE-owner

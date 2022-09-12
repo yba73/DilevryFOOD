@@ -12,7 +12,7 @@ const Login = () => {
   const { errors: userErrors, isAuth } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (isAuth) nav("/cart");
+    if (isAuth) nav("/profile");
   }, [isAuth]);
   const dispatch = useDispatch();
 

@@ -6,7 +6,6 @@ const postSchema = mongoose.Schema({
   },
   image: {
     type: String,
-    required: true,
   },
 
   desc: {

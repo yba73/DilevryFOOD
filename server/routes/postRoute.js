@@ -1,5 +1,6 @@
 const express = require("express");
 const multer = require("multer");
+
 const { Post } = require("../modules/postModule");
 const {
   addPost,
@@ -14,25 +15,34 @@ const { authMilddleware } = require("../middlewares/authMiddlewar");
 // const { isAdminMiddleware, userLogin } = require("../middlewares/isAdminMiddleware");
 
 const router = express.Router();
-const User = require("../modules/userModule");
+const { user, isAdmin } = require("../modules/userModule");
 const { isAdminMiddleware } = require("../middlewares/isAdminMiddleware");
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "my-images");
+  destination: function (req, file, folder) {
+    folder(null, "my-images");
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + "-" + file.originalname;
     cb(null, uniqueSuffix);
   },
 });
+// const storage = new CloudinaryStorage({
+//   cloudinary: cloudinary,
+//   params: {
+//     folder: "product",
+//     format: async (req, file) => ["png", "jpeg", "jpg"], // supports promises as well
+//     public_id: (req, file) => "computed-filename-using-request",
+//   },
+// });
 
 const upload = multer({ storage: storage });
 
 router.post(
   "/addPost",
-  // authMilddleware,
-  isAdminMiddleware,
+  authMilddleware,
+  // isAdminMiddleware(role),
+  // checkRole(["admin"]),
 
   upload.single("image"),
   addPost

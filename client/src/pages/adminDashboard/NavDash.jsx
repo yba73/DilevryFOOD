@@ -11,27 +11,27 @@ const NavDash = () => {
 
         <ul>
           <li>
-            <img src="dashboard (2).png" alt="" />
-
-            <Link className="spanLink" to="/admin/customers/">
+            <Link style={{}} className="spanLink" to="/admin">
               Users
             </Link>
           </li>
 
           <li>
-            <img src="teacher2.png" alt="" />
             <Link className="spanLink" to="/admin/products/">
               Products
             </Link>
           </li>
           <li>
-            <img src="reading-book (1).png" alt="" />
+            <Link className="spanLink" to="/admin/addproducts/">
+              Add Product
+            </Link>
+          </li>
+          <li>
             <Link className="spanLink" to="/admin/payments/">
               Payments
             </Link>
           </li>
           <li>
-            <img src="school.png" alt="" />
             &nbsp;<span>Schools</span>{" "}
           </li>
         </ul>

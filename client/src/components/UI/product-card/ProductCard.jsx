@@ -1,15 +1,29 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { getUserInfo } from "../../../store/shopping-cart/userSlice";
 import "../../../styles/product-card.css";
 
 import { Link } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/shopping-cart/cartSlice";
+import { deleteProduct } from "../../../store/shopping-cart/productSlice";
 
 const ProductCard = (props) => {
-  const { id, title, image01, price } = props.item;
+  const { _id, id, title, image01, price } = props.item;
   const dispatch = useDispatch();
+
+  const dispatsh = useDispatch();
+  useEffect(() => {
+    dispatsh(getUserInfo());
+  }, []);
+
+  const { userInfo } = useSelector((state) => state.user);
+  const Role = userInfo.isAdmin;
+
+  const deletPro = (e) => {
+    e.preventDefault();
+    dispatch(deleteProduct(_id));
+  };
 
   const addToCart = () => {
     dispatch(
@@ -34,9 +48,15 @@ const ProductCard = (props) => {
         </h5>
         <div className=" d-flex align-items-center justify-content-between ">
           {/* <span className="product__price">${price}</span> */}
-          {/* <button className="addTOCart__btn" onClick={addToCart}>
-            Add to Cart
-          </button> */}
+          {Role ? (
+            <>
+              <button className="addTOCart__btn" onClick={deletPro}>
+                Dellet Cart
+              </button>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

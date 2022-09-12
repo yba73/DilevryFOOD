@@ -5,7 +5,7 @@ export const getProducts = createAsyncThunk(
   "foods",
   async (data, { rejectWithValue }) => {
     try {
-      const res = await axios.get("/api/v1/foods");
+      const res = await axios.get("/api/v1/products");
       return res.data;
     } catch (error) {
       return rejectWithValue(
@@ -16,19 +16,38 @@ export const getProducts = createAsyncThunk(
     }
   }
 );
-// Post products admin/products/addproducts
-export const addProducts = createAsyncThunk(
-  "admin/products/addproducts",
+// Add products/
+export const addProduct = createAsyncThunk(
+  "products/addproduct",
   async (data, { rejectWithValue, dispatch }) => {
     try {
       const form = new FormData();
       form.append("id", data.id);
       form.append("title", data.title);
       form.append("price", data.price);
+      form.append("image01", data.file);
       form.append("category", data.category);
       form.append("desc", data.desc);
-      form.append("image01", data.file);
-      const res = await axios.post("/api/v1/admin/products/addproducts", form, {
+      const res = await axios.post("/api/v1/products/addproducts", form, {
+        headers: { token: localStorage.getItem("token") },
+      });
+      return dispatch(getProducts());
+    } catch (error) {
+      return rejectWithValue(
+        error.response && error.response.data.msg
+          ? error.response.data.msg
+          : error.message
+      );
+    }
+  }
+);
+
+// Delet products/
+export const deleteProduct = createAsyncThunk(
+  "products/deleteProduct",
+  async (productID, { rejectWithValue, dispatch }) => {
+    try {
+      await axios.delete(`/api/v1/products/${productID}`, {
         headers: { token: localStorage.getItem("token") },
       });
       return dispatch(getProducts());
@@ -72,4 +91,4 @@ export const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
-export const { selectCategory } = productSlice.actions;
+export const { selectProducts } = productSlice.actions;

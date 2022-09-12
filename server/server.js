@@ -10,8 +10,8 @@ require("dotenv").config();
 require("./config/connectDB");
 
 //Routes
-//Admin
-app.use("/api/v1/admin", require("./routes/userRoute"));
+// //Admin
+// app.use("/api/v1/admin", require("./routes/userRoute"));
 //User
 app.use("/api/v1/users", require("./routes/userRoute"));
 
@@ -22,11 +22,15 @@ app.use("/api/v1/homes", require("./routes/categoryRoute"));
 //homes
 app.use("/api/v1/homes", require("./routes/homeRoute"));
 
-//products
-app.use("/api/v1", require("./routes/productRoute"));
+// app.use("/api/v1/cart", require("./routes/cartRoute"));
+// //products
+app.use("/api/v1/products", require("./routes/productRoute"));
+//Cart
 
 //images
 app.use("/my-images", express.static("my-images"));
+
+//
 
 app.listen(process.env.PORT, () =>
   console.log("listening on port ", process.env.PORT)

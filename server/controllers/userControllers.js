@@ -12,7 +12,8 @@ exports.register = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { username, email, password, isAdmin, role } = req.body;
+    const { username, email, password, isAdmin, role, image, phone, Age } =
+      req.body;
     const existUser = await User.findOne({ email });
     if (existUser)
       return res.status(400).json({ msg: "User already registread." });
@@ -21,8 +22,10 @@ exports.register = async (req, res) => {
     var hash = bcrypt.hashSync(password, salt);
 
     const newUser = await User.create({
+      phone,
+      Age,
       isAdmin,
-
+      image,
       role,
       username,
       email,
@@ -59,7 +62,7 @@ exports.login = async (req, res) => {
   }
 };
 // @description get user information
-// @params GET /api/v1/users/
+// @params GET /api/v1/users/:id
 // @access PRIVATE
 exports.getUserInfo = async (req, res) => {
   try {
@@ -68,5 +71,31 @@ exports.getUserInfo = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "something went wrong ." });
+  }
+};
+
+// @description GET All Users List
+// @params GET /api/v1/users
+// @access PRIVATE
+
+exports.getAllusers = async (req, res) => {
+  try {
+    const UserList = await User.find({});
+    res.json(UserList);
+  } catch (error) {
+    res.status(500).json({ msg: "something went wrong." });
+  }
+};
+
+// @desc delete User by ID
+// @params DELETE /api/v1/users/:id
+// @access PRIVATE admin
+exports.deleteUser = async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.json({ success: true });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "something went wrong" });
   }
 };

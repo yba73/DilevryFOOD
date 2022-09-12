@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import Helmet from "../components/Helmet/Helmet";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/checkout.css";
 
 const Checkout = () => {
@@ -48,40 +48,85 @@ const Checkout = () => {
                     <form action="#" className="login active formchekout">
                       <h6 className="mb-4">Shipping Address</h6>
                       {/* Name */}
-                      <div className="form-group">
-                        <div className="input-group">
-                          <input type="text" placeholder="Entre your name" />
+                      <div className="input-group-chekout">
+                        <div
+                          style={{ marginTop: "20px" }}
+                          className="input-groupProductsdash roup"
+                        >
+                          <input
+                            style={{ marginTop: "20px" }}
+                            type="text"
+                            classNme="inputchekout"
+                            placeholder="Entre your name"
+                          />
                         </div>
                       </div>
                       {/* Email */}
-                      <div className="form-group">
-                        <div className="input-group">
-                          <input type="email" placeholder="Entre your Email" />
+                      <div className="input-group-chekout">
+                        <div
+                          style={{ marginTop: "20px" }}
+                          className="input-group-chekout"
+                        >
+                          <input
+                            style={{ marginTop: "20px" }}
+                            classNme="inputchekout"
+                            type="email"
+                            placeholder="Entre your Email"
+                          />
                         </div>
                       </div>
                       {/* Phone */}
-                      <div className="form-group">
-                        <div className="input-group">
-                          <input type="number" placeholder="Entre your Phone" />
+                      <div className="input-group-chekout">
+                        <div
+                          style={{ marginTop: "20px" }}
+                          className="input-group-chekout"
+                        >
+                          <input
+                            style={{ marginTop: "20px" }}
+                            classNme="inputchekout"
+                            type="number"
+                            placeholder="Entre your Phone"
+                          />
                         </div>
                       </div>
                       {/* country */}
-                      <div className="form-group">
-                        <div className="input-group">
-                          <input type="text" placeholder="Entre your country" />
+                      <div className="input-group-chekout">
+                        <div
+                          style={{ marginTop: "20px" }}
+                          className="input-group-chekout"
+                        >
+                          <input
+                            style={{ marginTop: "20px" }}
+                            classNme="inputchekout"
+                            type="text"
+                            placeholder="Entre your country"
+                          />
                         </div>
                       </div>
                       {/* city */}
-                      <div className="form-group">
-                        <div className="input-group">
-                          <input type="text" placeholder="Entre your city" />
+                      <div className="input-group-chekout">
+                        <div
+                          style={{ marginTop: "20px" }}
+                          className="input-group-chekout"
+                        >
+                          <input
+                            style={{ marginTop: "20px" }}
+                            classNme="inputchekout"
+                            type="text"
+                            placeholder="Entre your city"
+                          />
                         </div>
                       </div>
 
                       {/* Password */}
-                      <div className="form-group">
-                        <div className="input-group">
+                      <div className="input-group-chekout">
+                        <div
+                          style={{ marginTop: "20px" }}
+                          className="input-group-chekout"
+                        >
                           <input
+                            style={{ marginTop: "20px" }}
+                            classNme="inputchekout"
                             type="password"
                             pattern=".{8,}"
                             id="password"

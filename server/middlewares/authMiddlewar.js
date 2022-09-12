@@ -9,7 +9,6 @@ exports.authMilddleware = async (req, res, next) => {
     req.userId = verifyToken.sub;
 
     next();
-    // console.log(req.user);
   } catch (error) {
     console.log(error);
     res.status(401).json({ msg: error });

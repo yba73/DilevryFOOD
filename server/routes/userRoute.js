@@ -4,6 +4,8 @@ const {
   register,
   login,
   getUserInfo,
+  getAllusers,
+  deleteUser,
 } = require("../controllers/userControllers");
 const router = express.Router();
 const { body } = require("express-validator");
@@ -16,8 +18,10 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-
+// Post login /login
 router.post("/login", login);
+
+// Post  Register
 router.post(
   "/register",
   body("email", "please enter a valid email.").isEmail(),
@@ -25,5 +29,12 @@ router.post(
   upload.single("image"),
   register
 );
-router.get("/", authMilddleware, getUserInfo);
+// Get user All info
+router.get("/", getAllusers);
+
+// Get user info
+router.get("/infouser", authMilddleware, getUserInfo);
+// Delete user
+router.delete("/:id", deleteUser);
+
 module.exports = router;

@@ -7,9 +7,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/shopping-cart/userSlice";
 import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
 
+import { getUserInfo } from "../../store/shopping-cart/userSlice";
 import "../../styles/header.css";
 
 const Header = () => {
+  const dispatsh = useDispatch();
+  useEffect(() => {
+    dispatsh(getUserInfo());
+  }, []);
+
+  const { userInfo } = useSelector((state) => state.user);
+  const Role = userInfo.isAdmin;
+
   const nav = useNavigate();
   const { isAuth } = useSelector((state) => state.user);
   const menuRef = useRef(null);
@@ -69,9 +78,17 @@ const Header = () => {
               <Link className="navClass" to="/homes">
                 Home
               </Link>
-              <Link className="navClass" to="/admin/customers">
-                Admin
-              </Link>
+
+              <></>
+              {Role ? (
+                <>
+                  <Link className="navClass" to="/admin">
+                    Admin
+                  </Link>
+                </>
+              ) : (
+                <></>
+              )}
 
               {isAuth ? (
                 <>
@@ -126,7 +143,7 @@ const Header = () => {
           <div className="nav__right d-flex align-items-center gap-4">
             {/* <span className="user">
               <Link to="/login">
-                <i class="ri-user-line"></i>
+              <i class="ri-user-line"></i>
               </Link>s
             </span> */}
 

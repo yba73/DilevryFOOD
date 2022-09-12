@@ -1,83 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/dashboard.css";
 import { Container, Row, Col } from "reactstrap";
 import Helmet from "../../components/Helmet/Helmet";
 import CommonSection from "../../components/UI/common-section/CommonSection";
 import NavDash from "./NavDash";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteUser,
+  getAllUserInfo,
+} from "../../store/shopping-cart/userSlice";
 
 <link
   href="https://fonts.googleapis.com/css?family=Open Sans Condensed:300"
   rel="stylesheet"
 ></link>;
-const Customers = () => {
+const Customers = ({ items }) => {
+  const { _id, image, email, username, phone } = items;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllUserInfo());
+  }, []);
+  const { AllUserInfo } = useSelector((state) => state.user);
+  console.log(_id);
+  console.log(username);
+  const deletUser = (e) => {
+    e.preventDefault();
+    dispatch(deleteUser(_id));
+  };
   return (
-    <div className="classNamebody ">
-      <Helmet title="Customers">
-        <CommonSection title="Customers" />
-        <NavDash />
-        <Container>
-          <Row>
-            <Col lg="6" md="6" sm="12" className="m-auto text-center">
-              <div className="containerlDash ">
-                <div className="">
-                  <div className="headerdash">
-                    <div className="navdash">
-                      <div className="user">
-                        <img src="notifications.png" alt="" />
-                        <div className="img-case">
-                          <img src="user.png" alt="" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="">
-                    <div className="contentDash-2">
-                      <div className="new-students">
-                        <div className="titleDash">
-                          <h2>Customers</h2>
-                          <a href="#" className="btnView">
-                            View All
-                          </a>
-                        </div>
-                        <table>
-                          <tbody>
-                            <tr>
-                              <th>Photo</th>
-                              <th>Name</th>
-                              <th>Username</th>
-                              <th>Email</th>
-                              <th>Delte</th>
-                            </tr>
-
-                            <tr>
-                              <td>
-                                <img
-                                  className="userImage"
-                                  src="https://res.cloudinary.com/yba73/image/upload/v1662674820/Responsive%20Admin%20Panel/yassine_xxmlz2.jpg"
-                                  alt="user"
-                                />
-                              </td>
-                              <td>John Steve Doe</td>
-                              <td>John Steve Doe</td>
-                              <td>John Steve Doe</td>
-                              <td>
-                                <button className="btnDelete">Delete</button>
-                                <img src="info.png" alt="" />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </Helmet>
-    </div>
+    <tr>
+      <td>
+        <img className="userImage" src={image} alt="user" />
+      </td>
+      <td>{username}</td>
+      <td>{email}</td>
+      <td>{phone}</td>
+      <td>
+        <button className="btnDelete" onClick={deletUser}>
+          Delete
+        </button>
+        <img src="info.png" alt="" />
+      </td>
+    </tr>
   );
 };
 
