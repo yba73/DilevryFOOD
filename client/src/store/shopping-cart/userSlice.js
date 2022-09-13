@@ -109,7 +109,7 @@ const userSlice = createSlice({
   initialState: {
     UserState: "",
     userInfo: {},
-    AllUserInfo: [{}],
+    AllUserInfo: [],
     token: localStorage.getItem("token") || null,
     isAuth: Boolean(localStorage.getItem("isAuth")) || false,
 
@@ -123,7 +123,7 @@ const userSlice = createSlice({
       state.isAuth = false;
 
       state.userInfo = {};
-      state.AllUserInfo = [{}];
+      state.AllUserInfo = [];
     },
   },
   // reducer : registerUser fulfilled

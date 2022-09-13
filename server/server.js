@@ -22,7 +22,7 @@ app.use("/api/v1/homes", require("./routes/categoryRoute"));
 //homes
 app.use("/api/v1/homes", require("./routes/homeRoute"));
 
-// app.use("/api/v1/cart", require("./routes/cartRoute"));
+app.use("/api/v1/cart", require("./routes/cartRoute"));
 // //products
 app.use("/api/v1/products", require("./routes/productRoute"));
 //Cart

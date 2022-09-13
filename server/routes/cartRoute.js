@@ -1,16 +1,16 @@
-// const express = require("express");
-// const {
-//   addCart,
-//   getCart,
-//   removeCart,
-//   deleteCart,
-// } = require("../controllers/cartControllers");
-// const { authMilddleware } = require("../middlewares/authMiddlewar");
-// const router = express.Router();
+const express = require("express");
+const {
+  addCart,
+  getCart,
+  removeCart,
+  deleteCart,
+} = require("../controllers/cartControllers");
+const { authMilddleware } = require("../middlewares/authMiddlewar");
+const router = express.Router();
 
-// router.get("/", getCart);
-// router.put("/addtocart", addCart);
-// router.put("/removefromcart", removeCart);
-// router.put("/deletecart", deleteCart);
+router.get("/", authMilddleware, getCart);
+router.put("/addtocart", authMilddleware, addCart);
+router.put("/removefromcart", authMilddleware, removeCart);
+router.put("/deletecart", authMilddleware, deleteCart);
 
-// module.exports = router;
+module.exports = router;

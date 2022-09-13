@@ -56,8 +56,14 @@ const Header = () => {
       <Container>
         <div className="nav__wrapper d-flex align-items-center justify-content-between">
           <div className="logo">
-            <img src={logo} alt="logo" />
-            <h5>Tasty Treat</h5>
+            <img
+              style={{ height: "125px" }}
+              src={
+                "https://res.cloudinary.com/yba73/image/upload/v1662828151/homes/hcletyqhhmzkzxacdr2n.png"
+              }
+              alt="logo"
+            />
+            <h5>Chef Food</h5>
           </div>
 
           {/* ======= menu ======= */}

@@ -91,6 +91,7 @@ const Register = () => {
                             {...register("password")}
                           />
                         </div>
+                        <span className="help-text">At least 8 characters</span>
                       </div>
                       {/* Age */}
                       <div className="formProductsDash">
@@ -102,7 +103,6 @@ const Register = () => {
                             {...register("Age")}
                           />
                         </div>
-                        <span className="help-text">At least 8 characters</span>
                       </div>
 
                       {/* Phone */}
@@ -122,9 +122,10 @@ const Register = () => {
                         <div className="input-groupProductsdash roup">
                           <input
                             className="inputdash"
-                            type="file"
+                            type="text"
                             placeholder="Entre your url photo"
-                            onChange={(e) => setFileUp(e.target.files[0])}
+                            // onChange={(e) => setFileUp(e.target.files[0])}
+                            {...register("image")}
                           />
                         </div>
                       </div>

@@ -175,9 +175,18 @@ const Home = () => {
               </p>
             </Col>
 
-            {featureData.map((item, index) => (
-              <Col lg="4" md="6" sm="6" key={index} className="mt-5">
-                <div className="feature__item text-center px-5 py-3">
+            {featureData.map((item) => (
+              <Col
+                lg="4"
+                md="6"
+                sm="6"
+                key={Math.random() * 10}
+                className="mt-5"
+              >
+                <div
+                  key={Math.random() * 10}
+                  className="feature__item text-center px-5 py-3"
+                >
                   <img
                     src={item.imgUrl}
                     alt="feature-img"
@@ -242,8 +251,15 @@ const Home = () => {
             </Col>
 
             {allProducts.map((item) => (
-              <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mt-5">
-                <ProductCard item={item} />
+              <Col
+                lg="3"
+                md="4"
+                sm="6"
+                xs="6"
+                key={Math.random() * 10}
+                className="mt-5"
+              >
+                <ProductCard item={item} key={Math.random() * 10} />
               </Col>
             ))}
           </Row>
@@ -316,9 +332,9 @@ const Home = () => {
               <h2>Hot Pizza</h2>
             </Col>
 
-            {hotPizza.map((item) => (
-              <Col lg="3" md="4" sm="6" xs="6" key={item.id}>
-                <ProductCard item={item} />
+            {hotPizza.map((item, index) => (
+              <Col lg="3" md="4" sm="6" xs="6" key={Math.random() * 10}>
+                <ProductCard item={item} key={Math.random() * 10} />
               </Col>
             ))}
           </Row>

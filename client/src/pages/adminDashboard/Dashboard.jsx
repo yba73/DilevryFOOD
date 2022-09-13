@@ -1,4 +1,3 @@
-import { Outlet, NavLink, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
 import "../../styles/dashboard.css";
@@ -6,12 +5,14 @@ import Customers from "./Customers";
 import Helmet from "../../components/Helmet/Helmet";
 import NavDash from "./NavDash";
 import CommonSection from "../../components/UI/common-section/CommonSection";
-import {
-  deleteUser,
-  getAllUserInfo,
-} from "../../store/shopping-cart/userSlice";
+import { getAllUserInfo } from "../../store/shopping-cart/userSlice";
+import { useEffect } from "react";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllUserInfo());
+  }, []);
   const { AllUserInfo } = useSelector((state) => state.user);
   return (
     <div>
