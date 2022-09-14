@@ -11,28 +11,28 @@ const NavDash = () => {
 
         <ul>
           <li>
-            <Link style={{}} className="spanLink" to="/admin">
+            <Link className="spanLink" to="/admin">
               Users
             </Link>
           </li>
 
           <li>
-            <Link className="spanLink" to="/admin/products/">
+            <Link className="spanLink" to="/admin/products">
               Products
             </Link>
           </li>
           <li>
-            <Link className="spanLink" to="/admin/addproducts/">
+            <Link className="spanLink" to="/admin/addproducts">
               Add Product
             </Link>
           </li>
           <li>
-            <Link className="spanLink" to="/admin/payments/">
+            <Link className="spanLink" to="/admin/payments">
               Payments
             </Link>
           </li>
           <li>
-            &nbsp;<span>Schools</span>{" "}
+            <span>Schools</span>
           </li>
         </ul>
       </div>

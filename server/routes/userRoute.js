@@ -6,6 +6,7 @@ const {
   getUserInfo,
   getAllusers,
   deleteUser,
+  upadateUser,
 } = require("../controllers/userControllers");
 const router = express.Router();
 const { body } = require("express-validator");
@@ -37,4 +38,6 @@ router.get("/infouser", authMilddleware, getUserInfo);
 // Delete user
 router.delete("/:id", deleteUser);
 
+// Upadate user
+router.put("/:id", upadateUser);
 module.exports = router;

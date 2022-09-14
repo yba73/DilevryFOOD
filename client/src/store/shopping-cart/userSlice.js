@@ -76,9 +76,7 @@ export const updateProfileAction = createAsyncThunk(
   "users/updateUsers",
   async (userInfo, { rejectWithValue, dispatch }) => {
     try {
-      const res = await axios.put(`/api/v1/users/${userInfo.id}`, userInfo, {
-        headers: { token: localStorage.getItem("token") },
-      });
+      const res = await axios.put(`/api/v1/users/${userInfo.id}`, userInfo);
       return dispatch(getUserInfo());
     } catch (error) {}
   }

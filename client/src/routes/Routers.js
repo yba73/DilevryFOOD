@@ -11,7 +11,6 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import Dashboard from "../pages/adminDashboard/Dashboard";
-import Customers from "../pages/adminDashboard/Customers";
 import Payments from "../pages/adminDashboard/Payments";
 import Products from "../pages/adminDashboard/Products";
 import Profile from "../pages/Profile";
@@ -40,6 +39,7 @@ const Routers = () => {
         <Route path="/admin/payments" element={<Payments />} />
         <Route path="/admin/products" element={<Products />} />
         <Route path="/admin/addproducts" element={<AddProduct />} />
+
         <Route path="/admin" element={<Dashboard />} />
       </Route>
     </Routes>

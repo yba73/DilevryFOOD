@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../store/shopping-cart/userSlice";
@@ -45,7 +45,7 @@ const Login = () => {
                     className="login active formlogin"
                     onSubmit={handleSubmit(submitRegister)}
                   >
-                    <h2 className="title">Login</h2>
+                    <h2 className="">Login</h2>
 
                     {/* Email */}
                     <div className="form-groupLogin">

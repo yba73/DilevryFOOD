@@ -61,6 +61,47 @@ export const deleteProduct = createAsyncThunk(
   }
 );
 
+// Update products/
+
+export const updateProduct = createAsyncThunk(
+  "products/updateProduct",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      await axios.put(`/api/v1/products/${data.id}`, data, {
+        headers: { token: localStorage.getItem("token") },
+      });
+      return dispatch(getProducts());
+    } catch (error) {
+      return rejectWithValue(
+        error.response && error.response.data.msg
+          ? error.response.data.msg
+          : error.message
+      );
+    }
+  }
+);
+
+// Update image products/
+export const updateProductImage = createAsyncThunk(
+  "products/updateProductImage",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const form = new FormData();
+      form.append("img", data.file);
+      await axios.put(`/api/v1/products/image/${data.id}`, form, {
+        headers: { token: localStorage.getItem("token") },
+      });
+      return dispatch(getProducts());
+    } catch (error) {
+      return rejectWithValue(
+        error.response && error.response.data.msg
+          ? error.response.data.msg
+          : error.message
+      );
+    }
+  }
+);
+
 export const productSlice = createSlice({
   name: "products",
   initialState: {
@@ -71,7 +112,7 @@ export const productSlice = createSlice({
   },
   reducers: {
     selectProducts: (state, action) => {
-      state.categoryState = action.payload;
+      state.ProductList = action.payload;
     },
   },
   extraReducers: {

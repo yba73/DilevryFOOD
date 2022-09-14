@@ -111,8 +111,7 @@ const Home = () => {
                 </h1>
 
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui
-                  magni delectus tenetur autem, sint veritatis!
+                  The idea behind fast food is great - people want convenience.
                 </p>
 
                 <div className="hero__btns d-flex align-items-center gap-5 mt-4">
@@ -145,7 +144,11 @@ const Home = () => {
 
             <Col lg="6" md="6">
               <div className="hero__img">
-                <img src={heroImg} alt="hero-img" className="w-100" />
+                <img
+                  src="https://res.cloudinary.com/yba73/image/upload/v1662768273/homes/lxqhe7ewjrwy9sakfjgv.png"
+                  alt="hero-img"
+                  className="w-100"
+                />
               </div>
             </Col>
           </Row>
@@ -166,12 +169,11 @@ const Home = () => {
                 we will <span>take care</span>
               </h2>
               <p className="mb-1 mt-4 feature__text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor,
-                officiis?
+                “Food is symbolic of love when words are inadequate.”
               </p>
               <p className="feature__text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aperiam, eius.{" "}
+                “A recipe has no soul. You, as the cook, must bring soul to the
+                recipe.”
               </p>
             </Col>
 
@@ -276,7 +278,7 @@ const Home = () => {
             <Col lg="6" md="6">
               <div className="why__tasty-treat">
                 <h2 className="tasty__treat-title mb-4">
-                  Why <span>Tasty Treat?</span>
+                  Why <span>Chef Food?</span>
                 </h2>
                 <p className="tasty__treat-desc">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.

@@ -99,3 +99,16 @@ exports.deleteUser = async (req, res) => {
     res.status(500).json({ msg: "something went wrong" });
   }
 };
+
+// @description Update user by id
+// @params PUT /api/v1/users/:id
+// @access PRIVATE-owner
+
+exports.upadateUser = async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, { ...req.body });
+    res.json({ sucsses: true });
+  } catch (error) {
+    res.status(500).json({ msg: "something went wrong." });
+  }
+};

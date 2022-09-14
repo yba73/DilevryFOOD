@@ -47,7 +47,7 @@ const Register = () => {
                       className="login active formRegister "
                       onSubmit={handleSubmit(submitRegister)}
                     >
-                      <h2 className="title">Register</h2>
+                      <h2 className="">Register</h2>
 
                       {/* Username */}
                       <div className="formProductsDash">

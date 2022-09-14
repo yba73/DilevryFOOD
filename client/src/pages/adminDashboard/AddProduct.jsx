@@ -44,7 +44,7 @@ const AddProduct = () => {
                     className="login active formPrdouct "
                     onSubmit={handleSubmit(subProducts)}
                   >
-                    <h2 className="title">Add Product</h2>
+                    <h2 className="">Add Product</h2>
 
                     {/* id */}
                     <div className="formProductsDash">
@@ -117,10 +117,10 @@ const AddProduct = () => {
                     </div>
 
                     {/* button Login */}
-                    <button type="submit" className="btn-submit">
+                    <button type="submit" className="btn-submit-addProduct">
                       Add
                     </button>
-                    <Link className="navLink" to="/foods">
+                    <Link className="btnView" to="/foods">
                       Chek
                     </Link>
                   </form>

@@ -1,7 +1,7 @@
 const Category = require("../modules/categoryModel");
 const cloudinary = require("../utils/cloudinary");
-// @description add new post
-// @params POST /api/v1/posts/addpost
+// @description add new Category
+// @params POST /api/v1/category/addCategory
 // @access PRIVATE
 exports.addCategory = async (req, res) => {
   try {
@@ -11,7 +11,6 @@ exports.addCategory = async (req, res) => {
     });
     const newPost = await Category.create({
       display,
-
       imgUrl: result.secure_url,
       owner: req.userId,
     });
@@ -21,8 +20,8 @@ exports.addCategory = async (req, res) => {
   }
 };
 
-// @description GET post List
-// @params GET /api/v1/posts
+// @description GET Category List
+// @params GET /api/v1/category
 // @access PUBLIC
 exports.getCategory = async (req, res) => {
   try {
@@ -34,7 +33,7 @@ exports.getCategory = async (req, res) => {
 };
 
 // @description Delete post by id
-// @params DELETE /api/v1/posts/:id
+// @params DELETE /api/v1/category/:id
 // @access PRIVATE-owner
 exports.deleteCategory = async (req, res) => {
   try {
@@ -49,7 +48,7 @@ exports.deleteCategory = async (req, res) => {
 };
 
 // @description Update post by id
-// @params PUT /api/v1/posts/:id
+// @params PUT /api/v1/category/:id
 // @access PRIVATE-owner
 
 exports.upadateCategory = async (req, res) => {
@@ -65,7 +64,7 @@ exports.upadateCategory = async (req, res) => {
 };
 
 // @description Update post by id
-// @params PUT /api/v1/posts/image/:id
+// @params PUT /api/v1/category/image/:id
 // @access PRIVATE-owner
 
 exports.upadateImageCategory = async (req, res) => {

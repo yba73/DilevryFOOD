@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import "../../styles/dashboard.css";
-import { useDispatch } from "react-redux";
+import { Container, Row, Col } from "reactstrap";
+import Helmet from "../../components/Helmet/Helmet";
+import CommonSection from "../../components/UI/common-section/CommonSection";
+
+import { useDispatch, useSelector } from "react-redux";
 import {
   deleteUser,
   getAllUserInfo,
@@ -21,10 +25,23 @@ const Customers = ({ items }) => {
     e.preventDefault();
     dispatch(deleteUser(_id));
   };
+  const defaultImage = image;
   return (
     <tr>
       <td>
-        <img className="userImage" src={image} alt="user" />
+        {defaultImage ? (
+          <>
+            <img src={image} alt="user" width="100" />
+          </>
+        ) : (
+          <>
+            <img
+              src="https://res.cloudinary.com/yba73/image/upload/v1663121237/users/m6em0nt8oarygmyguhxe.png"
+              alt="user"
+              width="100"
+            />
+          </>
+        )}
       </td>
       <td>{username}</td>
       <td>{email}</td>

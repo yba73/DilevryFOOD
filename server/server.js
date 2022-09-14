@@ -17,15 +17,19 @@ app.use("/api/v1/users", require("./routes/userRoute"));
 
 //Post
 app.use("/api/v1/posts", require("./routes/postRoute"));
-// //Category
-app.use("/api/v1/homes", require("./routes/categoryRoute"));
+//Category
+app.use("/api/v1/category", require("./routes/categoryRoute"));
 //homes
 app.use("/api/v1/homes", require("./routes/homeRoute"));
+
+//Cart
 
 app.use("/api/v1/cart", require("./routes/cartRoute"));
 // //products
 app.use("/api/v1/products", require("./routes/productRoute"));
-//Cart
+
+//checkout
+app.use("/api/v1/checkout", require("./routes/CheckoutRoute"));
 
 //images
 app.use("/my-images", express.static("my-images"));

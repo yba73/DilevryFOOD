@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ListGroupItem } from "reactstrap";
 
 import "../../../styles/cart-item.css";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/shopping-cart/cartSlice";
+import { getCart } from "../../../store/shopping-cart/myCartSlice";
 
 const CartItem = ({ item }) => {
+  useEffect(() => {
+    dispatch(getCart());
+  }, []);
+
   const { id, title, price, image01, quantity, totalPrice } = item;
 
   const dispatch = useDispatch();
@@ -21,7 +26,7 @@ const CartItem = ({ item }) => {
       })
     );
   };
-
+  const cart = useSelector((state) => state.cart.cartItems);
   const decreaseItem = () => {
     dispatch(cartActions.removeItem(id));
   };

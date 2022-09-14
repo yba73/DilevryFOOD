@@ -76,7 +76,7 @@ export const removeCart = createAsyncThunk(
   }
 );
 
-const cartkhSlice = createSlice({
+const myCartSlice = createSlice({
   name: "myCart",
   initialState: {
     cartItems: [],
@@ -95,4 +95,4 @@ const cartkhSlice = createSlice({
   },
 });
 
-export default cartkhSlice.reducer;
+export default myCartSlice.reducer;

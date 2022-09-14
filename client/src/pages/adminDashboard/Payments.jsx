@@ -5,8 +5,18 @@ import { Container, Row, Col } from "reactstrap";
 import Helmet from "../../components/Helmet/Helmet";
 import CommonSection from "../../components/UI/common-section/CommonSection";
 import NavDash from "./NavDash";
+import { getcheckout } from "../../store/shopping-cart/chekoutSlice";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import CheckoutAdmin from "../../components/AdminDashboard/CheckoutAdmin";
 
 const Payments = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getcheckout());
+  }, []);
+  const { CheckoutList } = useSelector((state) => state.checkout);
+
   return (
     <Helmet title="Payments">
       <CommonSection title="Payments" />
@@ -19,30 +29,22 @@ const Payments = () => {
               <div className="contentDash-2">
                 <div className="recent-payments">
                   <div className="titleDash">
-                    <h2>Recent Payments</h2>
-                    <a href="#" className="btnView">
-                      View All
-                    </a>
+                    <h2>Payments</h2>
                   </div>
                 </div>
                 <table>
                   <tbody>
                     <tr>
                       <th>Name</th>
-                      <th>School</th>
-                      <th>Amount</th>
-                      <th>Option</th>
+                      <th>phone</th>
+                      <th>city</th>
+                      <th>Name of products</th>
+                      <th>Price</th>
+                      <th>Delete</th>
                     </tr>
-                    <tr>
-                      <td>John Doe</td>
-                      <td>St. James College</td>
-                      <td>$120</td>
-                      <td>
-                        <a href="#" className="btnView">
-                          View
-                        </a>
-                      </td>
-                    </tr>
+                    {CheckoutList.map((el, index) => (
+                      <CheckoutAdmin checkoutList={el} key={index} />
+                    ))}
                   </tbody>
                 </table>
               </div>

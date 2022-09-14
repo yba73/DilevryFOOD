@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 
 import { Container } from "reactstrap";
-import logo from "../../assets/images/res-logo.png";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/shopping-cart/userSlice";
@@ -69,18 +69,6 @@ const Header = () => {
           {/* ======= menu ======= */}
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <div className="menu d-flex align-items-center gap-5">
-              {/* {nav__links.map((item, index) => (
-                <NavLink
-                  to={item.path}
-                  key={index}
-                  className={(navClass) =>
-                    navClass.isActive ? "active__menu" : ""
-                  }
-                >
-                  {item.display}
-                </NavLink>
-              ))} */}
-
               <Link className="navClass" to="/homes">
                 Home
               </Link>

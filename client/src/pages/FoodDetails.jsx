@@ -6,6 +6,8 @@ import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
 
+import { getCart } from "../store/shopping-cart/myCartSlice";
+
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../store/shopping-cart/cartSlice";
 
@@ -17,6 +19,10 @@ const FoodDetails = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, []);
   const { ProductList } = useSelector((state) => state.products);
   const [tab, setTab] = useState("desc");
   const [enteredName, setEnteredName] = useState("");
@@ -27,9 +33,6 @@ const FoodDetails = () => {
   const navigate = useNavigate();
   const product = ProductList.find((product) => product.id === +params.id);
 
-  console.log("product ID =", product.id);
-  console.log("product _ID =", product._id);
-  console.log("params id =", +params.id);
   const [previewImg, setPreviewImg] = useState(product.image01);
   const { title, price, category, desc, image01 } = product;
 

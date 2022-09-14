@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section/CommonSection";
@@ -6,13 +6,17 @@ import "../styles/profile.css";
 
 import { getUserInfo } from "../store/shopping-cart/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import EditProfile from "../components/Profile/EditProfile";
 
 const Profile = () => {
+  const { userInfo } = useSelector((state) => state.user);
+
+  const [imgSrc, setImgSrc] = useState();
+  const defaultImage = userInfo.image;
   const dispatsh = useDispatch();
   useEffect(() => {
     dispatsh(getUserInfo());
   }, []);
-  const { userInfo } = useSelector((state) => state.user);
   return (
     <Helmet title="Profile">
       <CommonSection title="Profile" />
@@ -22,9 +26,22 @@ const Profile = () => {
           <Col lg="6" md="6" sm="12" className="m-auto text-center">
             <div className="dinbodyProfile ">
               <div className="containerprofile">
-                <div className="wrapper">
+                <div className="wrapperProfile">
                   <div className="left">
-                    <img src={userInfo.image} alt="user" width="100" />
+                    {defaultImage ? (
+                      <>
+                        <img src={userInfo.image} alt="user" width="100" />
+                      </>
+                    ) : (
+                      <>
+                        <img
+                          src="https://res.cloudinary.com/yba73/image/upload/v1663121237/users/m6em0nt8oarygmyguhxe.png"
+                          alt="user"
+                          width="100"
+                        />
+                      </>
+                    )}
+
                     <h4>{userInfo.username}</h4>
                   </div>
                   <div className="right">
@@ -43,7 +60,6 @@ const Profile = () => {
                     </div>
 
                     <div className="projects">
-                      {/* <h3>Projects</h3> */}
                       <div className="projects_data">
                         <div className="data">
                           <h4>Age</h4>
@@ -58,7 +74,7 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
-              {/* <UpdateProfile /> */}
+              <EditProfile Profile={userInfo} />
             </div>
           </Col>
         </Row>

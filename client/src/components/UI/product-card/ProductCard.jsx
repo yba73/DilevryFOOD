@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/shopping-cart/cartSlice";
 import { deleteProduct } from "../../../store/shopping-cart/productSlice";
+import Edit from "../../Add/Edit";
 
 const ProductCard = (props) => {
   const { _id, id, title, image01, price } = props.item;
   const dispatch = useDispatch();
 
-  const dispatsh = useDispatch();
   useEffect(() => {
-    dispatsh(getUserInfo());
+    dispatch(getUserInfo());
   }, []);
 
   const { userInfo } = useSelector((state) => state.user);
@@ -53,6 +53,7 @@ const ProductCard = (props) => {
               <button className="addTOCart__btn" onClick={deletPro}>
                 Dellet Cart
               </button>
+              <Edit item={props.item} />
             </>
           ) : (
             <></>

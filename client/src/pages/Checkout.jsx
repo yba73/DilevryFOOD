@@ -1,12 +1,19 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import Helmet from "../components/Helmet/Helmet";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/checkout.css";
-
+import { useForm } from "react-hook-form";
+import { addCheckout } from "../store/shopping-cart/chekoutSlice";
 const Checkout = () => {
+  const {
+    register,
+    handleSubmit,
+
+    formState: { errors },
+  } = useForm();
   const [enterName, setEnterName] = useState("");
   const [enterEmail, setEnterEmail] = useState("");
   const [enterNumber, setEnterNumber] = useState("");
@@ -17,9 +24,11 @@ const Checkout = () => {
   const shippingInfo = [];
   const cartTotalAmount = useSelector((state) => state.cart.totalAmount);
   const shippingCost = 30;
-
+  const dispatch = useDispatch();
   const totalAmount = cartTotalAmount + Number(shippingCost);
-
+  const submitCheckout = (LoginData) => {
+    dispatch(addCheckout(LoginData));
+  };
   const submitHandler = (e) => {
     e.preventDefault();
     const userShippingAddress = {
@@ -45,100 +54,86 @@ const Checkout = () => {
               <div>
                 <div>
                   <div className="containercheout">
-                    <form action="#" className="login active formchekout">
-                      <h6 className="mb-4">Shipping Address</h6>
+                    <form
+                      action="#"
+                      className="login active formPrdouct "
+                      onSubmit={handleSubmit(submitCheckout)}
+                    >
+                      <h2 className="">Payment</h2>
+
                       {/* Name */}
-                      <div className="input-group-chekout">
-                        <div
-                          style={{ marginTop: "20px" }}
-                          className="input-groupProductsdash roup"
-                        >
+                      <div className="formProductsDash">
+                        <div className="input-groupProductsdash roup">
                           <input
-                            style={{ marginTop: "20px" }}
+                            className="inputdash"
                             type="text"
-                            classNme="inputchekout"
-                            placeholder="Entre your name"
+                            placeholder="Entre Name "
+                            {...register("name")}
                           />
                         </div>
                       </div>
                       {/* Email */}
-                      <div className="input-group-chekout">
-                        <div
-                          style={{ marginTop: "20px" }}
-                          className="input-group-chekout"
-                        >
+                      <div className="formProductsDash">
+                        <div className="input-groupProductsdash roup">
                           <input
-                            style={{ marginTop: "20px" }}
-                            classNme="inputchekout"
-                            type="email"
+                            className="inputdash"
+                            type="text"
                             placeholder="Entre your Email"
+                            {...register("email")}
                           />
                         </div>
                       </div>
-                      {/* Phone */}
-                      <div className="input-group-chekout">
-                        <div
-                          style={{ marginTop: "20px" }}
-                          className="input-group-chekout"
-                        >
+
+                      {/* phone */}
+                      <div className="formProductsDash">
+                        <div className="input-groupProductsdash roup">
                           <input
-                            style={{ marginTop: "20px" }}
-                            classNme="inputchekout"
+                            className="inputdash"
                             type="number"
-                            placeholder="Entre your Phone"
+                            placeholder="Entre phone "
+                            {...register("phone")}
                           />
                         </div>
                       </div>
-                      {/* country */}
-                      <div className="input-group-chekout">
-                        <div
-                          style={{ marginTop: "20px" }}
-                          className="input-group-chekout"
-                        >
+                      {/* Country */}
+                      <div className="formProductsDash">
+                        <div className="input-groupProductsdash roup">
                           <input
-                            style={{ marginTop: "20px" }}
-                            classNme="inputchekout"
+                            className="inputdash"
                             type="text"
-                            placeholder="Entre your country"
-                          />
-                        </div>
-                      </div>
-                      {/* city */}
-                      <div className="input-group-chekout">
-                        <div
-                          style={{ marginTop: "20px" }}
-                          className="input-group-chekout"
-                        >
-                          <input
-                            style={{ marginTop: "20px" }}
-                            classNme="inputchekout"
-                            type="text"
-                            placeholder="Entre your city"
+                            placeholder="Entre your Country "
+                            {...register("country")}
                           />
                         </div>
                       </div>
 
-                      {/* Password */}
-                      <div className="input-group-chekout">
-                        <div
-                          style={{ marginTop: "20px" }}
-                          className="input-group-chekout"
-                        >
+                      {/* City */}
+                      <div className="formProductsDash">
+                        <div className="input-groupProductsdash roup">
                           <input
-                            style={{ marginTop: "20px" }}
-                            classNme="inputchekout"
-                            type="password"
-                            pattern=".{8,}"
-                            id="password"
-                            placeholder="Your password"
+                            className="inputdash"
+                            type="text"
+                            placeholder="City"
+                            {...register("city")}
                           />
                         </div>
-                        <span className="help-text">At least 8 characters</span>
                       </div>
 
-                      {/* button Payment */}
-                      <button type="submit" className="btn-submit">
-                        Payment
+                      {/* postalCode */}
+                      <div className="formProductsDash">
+                        <div className="input-groupProductsdash roup">
+                          <input
+                            className="inputdash"
+                            type="text"
+                            placeholder="postal Code"
+                            {...register("postalCode")}
+                          />
+                        </div>
+                      </div>
+
+                      {/* button Login */}
+                      <button type="submit" className="btn-submit-addProduct">
+                        Add
                       </button>
                     </form>
                   </div>
